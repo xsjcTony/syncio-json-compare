@@ -1,0 +1,42 @@
+{
+  "name": "json-compare",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@aelita-dev/eslint-config": "^3.15.2",
+    "@tailwindcss/language-server": "^0.14.8",
+    "@tailwindcss/vite": "^4.0.9",
+    "@types/node": "22",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/language-server": "^2.2.8",
+    "@vue/tsconfig": "^0.7.0",
+    "bundle-require": "^5.1.0",
+    "eslint": "^9.21.0",
+    "eslint-import-resolver-typescript": "^3.8.3",
+    "eslint-plugin-import-x": "^4.6.1",
+    "eslint-plugin-vue": "^10.0.0",
+    "eslint-plugin-vuejs-accessibility": "^2.4.1",
+    "eslint-processor-vue-blocks": "^2.0.0",
+    "tailwindcss": "^4.0.9",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "vue-eslint-parser": "^10.1.0",
+    "vue-tsc": "^2.2.8"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
