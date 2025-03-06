@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JsonCompareController;
 
 
-Route::get('/user', function (Request $request) {
-    return response()->json(['success' => true]);
-});
+Route::post('/json-compare/store-payload', [JsonCompareController::class, 'storePayload']);
