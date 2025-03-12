@@ -1,0 +1,2 @@
+export const DEFAULT_SECOND_PAYLOAD_DELAY = 1
+export const JSON_FORMAT_INDENT = 2
