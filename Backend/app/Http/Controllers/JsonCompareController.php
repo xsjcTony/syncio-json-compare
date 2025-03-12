@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\JsonCompareRequest;
 use App\Services\JsonCompareService;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -42,10 +41,10 @@ class JsonCompareController extends Controller {
      * Second payload
      */
     // throw error if the first payload already exists
-    if ($this->jsonCompareService->isFirstPayloadExist()) {
+    if (!$this->jsonCompareService->isFirstPayloadExist()) {
       return response()->json(
-        ['message' => 'First payload already exists, please send the second one.'],
-        400,
+        ['message' => 'Please upload the first payload first.'],
+        Response::HTTP_BAD_REQUEST,
       );
     }
 
@@ -62,5 +61,24 @@ class JsonCompareController extends Controller {
   }
 
 
-  // TODO: comparePayloads method (use SSE)
+  public function comparePayloads() {
+    if (!$this->jsonCompareService->isBothPayloadsExist()) {
+      return response()->json(
+        ['message' => 'Please upload payloads first.'],
+        RESPONSE::HTTP_BAD_REQUEST,
+      );
+    } else {
+      $result = $this->jsonCompareService->compareJsons();
+
+      if ($result === false) {
+        // diff failed
+        return response()->json(
+          ['message' => 'Failed to compare payloads.'],
+          RESPONSE::HTTP_INTERNAL_SERVER_ERROR,
+        );
+      } else {
+        return response()->json(['success' => true, 'diff' => $result]);
+      }
+    }
+  }
 }
