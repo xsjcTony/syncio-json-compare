@@ -76,19 +76,15 @@ export function patchJSON(initialJSON: object, patches: JSONPatch[]): object {
 
     const obj = deepRead(patchedJSON, pathSegments)
 
-    for (const { op, value } of operations) {
-      switch (op) {
+    for (const operation of operations) {
+      switch (operation.op) {
         case 'replace': {
-          insertAfter(obj, `${lastSegment}__patched__replace`, value, lastSegment)
+          insertAfter(obj, `${lastSegment}__patched__replace`, operation.value, lastSegment)
           break
         }
-        // case 'add': {
-        //   obj[lastSegment] = value
-        //   break
-        // }
         case 'add': {
           const key = Array.isArray(obj) ? lastSegment : `${lastSegment}__patched__add`
-          obj[key] = makeRecursiveKeyObject(value, '__patched__add')
+          obj[key] = makeRecursiveKeyObject(operation.value, '__patched__add')
           break
         }
         case 'remove': {

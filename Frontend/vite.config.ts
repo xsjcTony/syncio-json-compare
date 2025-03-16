@@ -11,4 +11,7 @@ export default defineConfig({
     vue(),
   ],
   envPrefix: 'SYNCIO_',
+  build: {
+    chunkSizeWarningLimit: 1024,
+  },
 })
