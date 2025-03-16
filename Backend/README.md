@@ -4,11 +4,15 @@
 
 This is the ***Backend*** of the JSON Compare project.
 
+## `.env`
+1. Create a `.env` file.
+2. Copy the contents of `.env.example` to `.env`.
+
 ## Start the server
 
-- Make sure to have `php` and `composer` installed.
+1. Make sure to have `php` and `composer` installed.
 
-- Run `composer run dev` to start the server.
+2. Run `composer run dev` to start the server.
 
 - It should default to listen to `http://localhost:8000`.
 
