@@ -12,17 +12,17 @@ import {
 } from '@constants/regex'
 
 
-function deepRead(obj: object, pathSegments: string[]): any {
-  return pathSegments.reduce((acc: any, pathSegment) => acc[pathSegment], obj)
+export function deepRead(obj: object, pathSegments: string[]): any {
+  return pathSegments.reduce((acc: any, pathSegment) => acc?.[pathSegment], obj)
 }
 
-function insertAfter(obj: any, key: string, value: JsonValue, afterKey: string): void {
-  if (!obj[afterKey])
+export function insertAfter(obj: any, key: string, value: JsonValue, anchorKey: string): void {
+  if (!obj?.[anchorKey])
     return
 
   const keys = Object.keys(obj)
   const values = Object.values(obj)
-  const afterKeyIndex = keys.indexOf(afterKey)
+  const afterKeyIndex = keys.indexOf(anchorKey)
   const keysToDelete = keys.toSpliced(0, afterKeyIndex + 1)
 
   for (const key of keysToDelete)
@@ -39,7 +39,7 @@ function insertAfter(obj: any, key: string, value: JsonValue, afterKey: string):
 }
 
 
-function makeRecursiveKeyObject(value: JsonValue, keySuffix: string): any {
+export function makeRecursiveKeyObject(value: JsonValue, keySuffix: string): any {
   if (value && typeof value === 'object' && !Array.isArray(value)) {
     return Object.entries(value).reduce<any>((acc, [key, value]) => {
       acc[`${key}${keySuffix}`] = makeRecursiveKeyObject(value, keySuffix)
@@ -50,11 +50,11 @@ function makeRecursiveKeyObject(value: JsonValue, keySuffix: string): any {
   return value
 }
 
-function isObjectOrArrayStartBracket(str: string): boolean {
+export function isObjectOrArrayStartBracket(str: string): boolean {
   return OBJECT_OPENING_BRACKET_REGEX.test(str) || ARRAY_OPENING_BRACKET_REGEX.test(str)
 }
 
-function isObjectOrArrayEndBracket(str: string): boolean {
+export function isObjectOrArrayEndBracket(str: string): boolean {
   return OBJECT_ENDING_BRACKET_REGEX.test(str) || ARRAY_ENDING_BRACKET_REGEX.test(str)
 }
 

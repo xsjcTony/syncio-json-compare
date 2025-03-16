@@ -5,7 +5,10 @@ type Operation = 'add' | 'remove' | 'replace' | 'test'
 
 
 export type JSONPatch = {
+  op: 'remove'
+  path: `/${string}`
+} | {
   value: JsonValue
-  op: Operation
+  op: Exclude<Operation, 'remove'>
   path: `/${string}`
 }

@@ -27,7 +27,6 @@ const {
 
   sendFirstPayload,
   resetApp,
-
 } = useJsonCompare(secondPayloadDelayRef)
 
 
