@@ -1,5 +1,17 @@
-# Vue 3 + TypeScript + Vite
+<h1 align="center">JSON Compare</h1>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is the ***Frontend*** of the JSON Compare project.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+- Make sure to spin up the Backend Server first.
+
+## How to run the project
+
+- Make sure to have `Node.js` v20+ installed.
+- Run `pnpm install` or o`npm install`.
+- Run `pnpm build` or `npm run build`.
+- Run `pnpm preview` or `npm run preview`.
+- Visit `http://localhost:4173` in your browser.
+
+### Backend base URL
+
+- If your backend server is not running on `http://localhost:8000`, you can change the base URL in `.env` file's `SYNCIO_BACKEND_BASE_URL` key.
